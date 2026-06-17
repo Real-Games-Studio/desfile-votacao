@@ -200,7 +200,7 @@
           <span class="t-bar t-red">${t('idle.line1')}</span>
           <span class="t-bar t-green">${t('idle.line2')}</span>
         </div>
-        <img class="idle-logo" src="/assets/brand/logo.png" alt="" data-edit="idle-logo" />
+        <img class="idle-logo" src="/assets/brand/logo-big.png" alt="" data-edit="idle-logo" />
         <div class="idle-box" data-edit="idle-box">
           <img class="idle-mask" src="/assets/icons/mask.png" alt="" />
           <div class="idle-box-text">

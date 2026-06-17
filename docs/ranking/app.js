@@ -56,7 +56,7 @@
     for (const side of ['left', 'right']) if (groups[side]) g += `<g data-edit="ribbon-${side}">${groups[side]}</g>`;
     return `<svg class="ribbon-svg" viewBox="0 0 1920 1080" preserveAspectRatio="none">${g}</svg>`;
   }
-  const logo = () => `<img class="rk-logo" src="../assets/brand/logo.png" alt="" data-edit="rk-logo" />`;
+  const logo = () => `<img class="rk-logo" src="../assets/brand/logo-big.png" alt="" data-edit="rk-logo" />`;
   const medalClass = (p) => (p === 1 ? 'gold' : p === 2 ? 'silver' : p === 3 ? 'bronze' : '');
 
   // ---------- LOOP A (barras + FLIP) ----------
