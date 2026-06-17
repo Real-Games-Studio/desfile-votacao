@@ -235,7 +235,11 @@
     if (!d) return '';
     if (d.video) return `<video src="/assets/${d.video}" autoplay loop muted playsinline></video>`;
     if (d.still) return `<img src="/assets/${d.still}" alt="" />`;
-    return `<div class="video-ph">${SVG_FILM}<span>${t('selection.soon')}</span><small>${d.escola}</small></div>`;
+    // sem acervo ainda: video placeholder (Big Buck Bunny, CC-BY) em loop
+    return (
+      `<video src="/assets/placeholder.mp4" autoplay loop muted playsinline></video>` +
+      `<span class="video-badge">${SVG_FILM}${t('selection.soon')}</span>`
+    );
   }
   // titulo ACIMA do video (banner GRES + enredo), so quando ha destaque
   function videoTitleHtml() {
