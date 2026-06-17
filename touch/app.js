@@ -234,10 +234,11 @@
     const d = highlightedId ? byId(highlightedId) : null;
     if (!d) return '';
     if (d.video) return `<video src="/assets/${d.video}" autoplay loop muted playsinline></video>`;
-    if (d.still) return `<img src="/assets/${d.still}" alt="" />`;
-    // sem acervo ainda: video placeholder (Big Buck Bunny, CC-BY) em loop
+    // sem acervo ainda: video placeholder (Big Buck Bunny, CC-BY) em loop PRA TODOS,
+    // usando o still como poster quando existe
+    const poster = d.still ? ` poster="/assets/${d.still}"` : '';
     return (
-      `<video src="/assets/placeholder.mp4" autoplay loop muted playsinline></video>` +
+      `<video src="/assets/placeholder.mp4"${poster} autoplay loop muted playsinline></video>` +
       `<span class="video-badge">${SVG_FILM}${t('selection.soon')}</span>`
     );
   }
@@ -319,6 +320,7 @@
     const i = top3.indexOf(id);
     if (i >= 0) {
       top3.splice(i, 1); // deseleciona: NAO troca o video
+      if (top3.length === 0) highlightedId = null; // deselecionou tudo: para o video
     } else {
       if (top3.length < 3) top3.push(id);
       highlightedId = id; // seleciona (ou so assiste): toca o video
