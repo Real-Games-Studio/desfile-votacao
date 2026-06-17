@@ -225,10 +225,17 @@
     resetInactivity();
   }
 
-  // o video toca assim que a opcao e tocada (sem botao de play)
+  const SVG_FILM =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M10 9.5v5l4-2.5z" fill="#fff" stroke="none"/></svg>';
+
+  // o video toca assim que a opcao e tocada (sem botao de play).
+  // sem video/still ainda -> placeholder.
   function videoStageHtml() {
     const d = highlightedId ? byId(highlightedId) : null;
-    return d && d.still ? `<img src="../assets/${d.still}" alt="" />` : '';
+    if (!d) return '';
+    if (d.video) return `<video src="../assets/${d.video}" autoplay loop muted playsinline></video>`;
+    if (d.still) return `<img src="../assets/${d.still}" alt="" />`;
+    return `<div class="video-ph">${SVG_FILM}<span>${t('selection.soon')}</span><small>${d.escola}</small></div>`;
   }
   // titulo ACIMA do video (banner GRES + enredo), so quando ha destaque
   function videoTitleHtml() {
@@ -306,9 +313,12 @@
     if (!pill) return;
     const id = pill.dataset.id;
     const i = top3.indexOf(id);
-    if (i >= 0) top3.splice(i, 1);
-    else if (top3.length < 3) top3.push(id);
-    highlightedId = id; // sempre toca o video da opcao tocada
+    if (i >= 0) {
+      top3.splice(i, 1); // deseleciona: NAO troca o video
+    } else {
+      if (top3.length < 3) top3.push(id);
+      highlightedId = id; // seleciona (ou so assiste): toca o video
+    }
     updateSelection();
   }
 

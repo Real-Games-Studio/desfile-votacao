@@ -7,7 +7,8 @@
   },
   "selection": {
     "title": "Choose your 3 favorite parades",
-    "advance": "next"
+    "advance": "next",
+    "soon": "Video coming soon"
   },
   "podium": {
     "title": "CONFIRM YOUR VOTES",
