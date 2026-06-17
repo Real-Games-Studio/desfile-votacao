@@ -1,0 +1,11 @@
+{
+  "id": "5.1.3a",
+  "experience": "Destaque: Votacao Melhor Desfile de Todos os Tempos - Touch",
+  "resolution": "Full HD",
+  "orientation": "Horizontal",
+  "timeout_s": 30,
+  "confirmation_return_s": 9,
+  "require_full_top3": true,
+  "languages": ["pt", "en", "es"],
+  "default_language": "pt"
+}

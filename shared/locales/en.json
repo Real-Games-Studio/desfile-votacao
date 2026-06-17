@@ -1,0 +1,24 @@
+{
+  "idle": {
+    "line1": "WHAT'S YOUR MOST",
+    "line2": "UNFORGETTABLE PARADE?",
+    "box": "Vote for the parades you consider the most iconic of the Sapucaí",
+    "cta": "Touch the screen to start"
+  },
+  "selection": {
+    "title": "Choose your 3 favorite parades",
+    "advance": "next"
+  },
+  "podium": {
+    "title": "CONFIRM YOUR VOTES",
+    "confirm": "confirm vote"
+  },
+  "thanks": {
+    "title": "THANK YOU FOR PARTICIPATING!",
+    "subtitle": "Carnival is also built on collective memories."
+  },
+  "ranking": {
+    "loopA": { "title": "The Most Memorable Parades", "subtitle": "Visitor votes — live" },
+    "loopB": { "title": "The Sapucaí Podium", "subtitle": "Updating in real time" }
+  }
+}

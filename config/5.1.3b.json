@@ -1,0 +1,15 @@
+{
+  "id": "5.1.3b",
+  "experience": "Destaque: Votacao Melhor Desfile de Todos os Tempos - Ranking",
+  "resolution": "Full HD",
+  "orientation": "Horizontal",
+  "timeout_s": 30,
+  "loopA_s": 30,
+  "loopB_s": 30,
+  "languages": [
+    "pt",
+    "en",
+    "es"
+  ],
+  "default_language": "pt"
+}

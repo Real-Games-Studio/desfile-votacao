@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+
+# dados de runtime do servidor (votos persistidos / logs)
+server/data/
+
+# videos pesados do acervo entram fora do git (ou via LFS)
+assets/videos/

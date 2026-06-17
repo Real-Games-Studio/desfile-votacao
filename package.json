@@ -1,0 +1,15 @@
+{
+  "name": "desfile-votacao",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Votacao Melhor Desfile de Todos os Tempos - Touch (5.1.3a) + Ranking (5.1.3b) - Carnaval XP",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch server/src/index.js",
+    "start": "node server/src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  }
+}

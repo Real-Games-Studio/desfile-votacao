@@ -1,0 +1,112 @@
+[
+  {
+    "id": "imperio-serrano-1983",
+    "escola": "Império Serrano",
+    "gres": "GRES Império Serrano",
+    "ano": 1983,
+    "enredo": "Mãe Baiana Mãe",
+    "thumb": "thumbs/imperio-serrano.png",
+    "still": "stills/imperio-serrano.jpg",
+    "video": "",
+    "real": true
+  },
+  {
+    "id": "vila-isabel-1984",
+    "escola": "Unidos de Vila Isabel",
+    "gres": "GRES Unidos de Vila Isabel",
+    "ano": 1984,
+    "enredo": "Pra Tudo Se Acabar Na Quarta-Feira",
+    "thumb": "thumbs/vila-isabel.png",
+    "still": "stills/vila-isabel.jpg",
+    "video": "",
+    "real": true
+  },
+  {
+    "id": "caprichosos-1985",
+    "escola": "Caprichosos de Pilares",
+    "gres": "GRES Caprichosos de Pilares",
+    "ano": 1985,
+    "enredo": "E Por Falar em Saudade...",
+    "thumb": "thumbs/caprichosos.png",
+    "still": "stills/caprichosos.jpg",
+    "video": "",
+    "real": true
+  },
+  {
+    "id": "mangueira-1985",
+    "escola": "Mangueira",
+    "gres": "GRES Estação Primeira de Mangueira",
+    "ano": 1985,
+    "enredo": "Caxias, o Retrato do Brasil",
+    "thumb": "",
+    "still": "",
+    "video": "",
+    "real": false
+  },
+  {
+    "id": "beija-flor-1976",
+    "escola": "Beija-Flor",
+    "gres": "GRES Beija-Flor de Nilópolis",
+    "ano": 1976,
+    "enredo": "Sonhar com Rei Dá Leão",
+    "thumb": "",
+    "still": "",
+    "video": "",
+    "real": false
+  },
+  {
+    "id": "salgueiro-1993",
+    "escola": "Salgueiro",
+    "gres": "GRES Acadêmicos do Salgueiro",
+    "ano": 1993,
+    "enredo": "Peguei um Ita no Norte",
+    "thumb": "",
+    "still": "",
+    "video": "",
+    "real": false
+  },
+  {
+    "id": "mocidade-1985",
+    "escola": "Mocidade Independente",
+    "gres": "GRES Mocidade Independente de Padre Miguel",
+    "ano": 1985,
+    "enredo": "Ziriguidum 2001, Carnaval nas Estrelas",
+    "thumb": "",
+    "still": "",
+    "video": "",
+    "real": false
+  },
+  {
+    "id": "portela-1970",
+    "escola": "Portela",
+    "gres": "GRES Portela",
+    "ano": 1970,
+    "enredo": "Lendas e Mistérios da Amazônia",
+    "thumb": "",
+    "still": "",
+    "video": "",
+    "real": false
+  },
+  {
+    "id": "imperatriz-1989",
+    "escola": "Imperatriz Leopoldinense",
+    "gres": "GRES Imperatriz Leopoldinense",
+    "ano": 1989,
+    "enredo": "Liberdade, Liberdade! Abre as Asas Sobre Nós",
+    "thumb": "",
+    "still": "",
+    "video": "",
+    "real": false
+  },
+  {
+    "id": "mangueira-2019",
+    "escola": "Mangueira",
+    "gres": "GRES Estação Primeira de Mangueira",
+    "ano": 2019,
+    "enredo": "História pra Ninar Gente Grande",
+    "thumb": "",
+    "still": "",
+    "video": "",
+    "real": false
+  }
+]

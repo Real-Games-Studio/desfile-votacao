@@ -1,0 +1,24 @@
+{
+  "idle": {
+    "line1": "QUAL O SEU DESFILE",
+    "line2": "INESQUECÍVEL?",
+    "box": "Vote nos desfiles que você considera mais marcantes da Sapucaí",
+    "cta": "Toque na tela para começar"
+  },
+  "selection": {
+    "title": "Escolha seus 3 desfiles favoritos",
+    "advance": "avançar"
+  },
+  "podium": {
+    "title": "CONFIRME SEUS VOTOS",
+    "confirm": "confirmar voto"
+  },
+  "thanks": {
+    "title": "OBRIGADO POR PARTICIPAR!",
+    "subtitle": "O Carnaval também se constrói com memórias coletivas."
+  },
+  "ranking": {
+    "loopA": { "title": "Os Desfiles Mais Marcantes", "subtitle": "Votação dos visitantes — ao vivo" },
+    "loopB": { "title": "O Pódio da Sapucaí", "subtitle": "Atualizando em tempo real" }
+  }
+}

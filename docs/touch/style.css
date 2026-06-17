@@ -1,0 +1,255 @@
+/* ===== Fonte da marca (TodesRC se instalada; senao Archivo empacotada offline) ===== */
+@font-face {
+  font-family: 'Display';
+  src: local('TodesRC'), local('TodesRC-Regular'), url('../assets/fonts/Display-Regular.woff2') format('woff2');
+  font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: 'Display';
+  src: local('TodesRC Bold'), local('TodesRC-Bold'), url('../assets/fonts/Display-Bold.woff2') format('woff2');
+  font-weight: 700; font-display: swap;
+}
+@font-face {
+  font-family: 'Display';
+  src: local('TodesRC Black'), local('TodesRC-Black'), url('../assets/fonts/Display-Black.woff2') format('woff2');
+  font-weight: 900; font-display: swap;
+}
+
+:root {
+  --red: #ff1f22;
+  --yellow: #ffce00;
+  --green: #00853d;
+  --green-d: #006629;
+  --cyan: #008ccc;
+  --blue: #155cad;
+  --magenta: #ff24c8;
+  --teal: #006c73;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  font-family: 'Display', 'Segoe UI', system-ui, sans-serif;
+  color: #fff;
+  user-select: none;
+  -webkit-user-select: none;
+}
+/* FASE DE TESTE: cursor visivel. Kiosk -> body.kiosk esconde. */
+body { cursor: auto; }
+body.kiosk { cursor: none; }
+
+/* Palco fixo 1920x1080 (resolucao fixa 16:9). Numa tela 1920x1080 fica 1:1;
+   o --s so reduz para caber em telas menores (preview/teste). */
+#stage {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1920px; height: 1080px;
+  transform-origin: top left;
+  transform: scale(var(--s, 1));
+  background: #000;
+  overflow: hidden;
+}
+#screen { position: absolute; inset: 0; }
+
+.scr { position: absolute; inset: 0; animation: fade 350ms ease; }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+img { display: block; }
+button { font-family: inherit; border: none; cursor: pointer; color: inherit; }
+
+/* ===================== FITAS: COR CORRENDO PELO CAMINHO ===================== */
+/* cada fita e um path SVG (linha-de-centro da fita real); faixas de cor SOLIDAS
+   (cores reais da arte, sem degrade) correm EXATAMENTE pelo caminho da fita e
+   dao a volta sem emenda. Esquerda e direita seguem suas setas (sentidos opostos). */
+.ribbon-svg {
+  position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none;
+}
+.ribbon-svg path { fill: none; stroke-linecap: butt; stroke-linejoin: round; }
+@keyframes dashDown { from { stroke-dashoffset: var(--o); } to { stroke-dashoffset: calc(var(--o) - var(--period)); } }
+@keyframes dashUp { from { stroke-dashoffset: var(--o); } to { stroke-dashoffset: calc(var(--o) + var(--period)); } }
+
+/* ===================== BANDEJA DE ACESSIBILIDADE (idiomas) ===================== */
+/* bandeja recriada em CSS: barra teal + 4 circulos azuis (PT/EN/ES + acessib.)
+   desliza pra dentro/fora com animacao; recolhida = so a aba/seta. */
+.a11y { position: absolute; left: 0; top: 452px; z-index: 6; display: flex; align-items: center; }
+.a11y-panel {
+  background: #2576c9; border-radius: 0 8px 8px 0; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  width: 80px; padding: 18px 13px;
+  transition: width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+              padding 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
+}
+.a11y:not(.open) .a11y-panel { width: 0; padding: 18px 0; opacity: 0; }
+.a11y-c {
+  width: 54px; height: 54px; flex-shrink: 0; border-radius: 50%;
+  background: #fff; color: #1565c0; font-weight: 900; font-size: 24px;
+  display: grid; place-items: center;
+}
+.a11y-c.on { box-shadow: 0 0 0 4px #0c3c78; }
+.a11y-c.a11y-icon svg { width: 30px; height: 30px; }
+.a11y-tab {
+  background: #2576c9; color: #fff; font-weight: 900; font-size: 30px;
+  width: 34px; height: 74px; border-radius: 0 10px 10px 0;
+  display: grid; place-items: center; flex-shrink: 0;
+}
+
+/* ===================== IDLE / THANKS (telas estaticas) ===================== */
+.full-img { position: absolute; inset: 0; width: 1920px; height: 1080px; object-fit: cover; }
+.scr-static { position: absolute; inset: 0; }
+.lang-hotspot { position: absolute; width: 86px; height: 56px; left: 0; background: transparent; z-index: 2; }
+.lang-pt { top: 480px; }
+.lang-en { top: 540px; }
+.lang-es { top: 606px; }
+
+/* ===================== SELECTION ===================== */
+.list-title {
+  position: absolute; left: 1311px; top: 50px; width: 610px;
+  font-weight: 400; font-size: 31px; color: #fff;
+}
+.sel-list {
+  position: absolute; left: 1311px; top: 110px; width: 610px;
+  display: flex; flex-direction: column; gap: 11px;
+}
+.pill {
+  position: relative; height: 60px;
+  background: var(--green); display: flex; align-items: center;
+  padding: 0 12px 0 6px; gap: 14px; cursor: pointer;
+  transition: background 180ms ease;
+}
+.pill.selected { background: var(--cyan); }
+.pill .thumb {
+  width: 50px; height: 50px; flex-shrink: 0;
+  background: var(--magenta); object-fit: cover; overflow: hidden;
+}
+.pill .name {
+  flex: 1; color: #fff; font-weight: 400; font-size: 29px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pill.placeholder .name { color: #ff8fd9; }
+.pill .check {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border: 3px solid #fff; background: transparent;
+  display: grid; place-items: center; color: #fff;
+}
+.pill .check svg { width: 30px; height: 30px; }
+.pill.selected .check { background: #fff; color: var(--cyan); }
+.pill .num {
+  width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
+  background: #000; color: #fff; font-weight: 900; font-size: 26px;
+  display: grid; place-items: center;
+}
+.pill .num:empty { display: none; }
+
+.stage-video {
+  position: absolute; left: 210px; top: 333px; width: 812px; height: 500px;
+  background: var(--teal); overflow: hidden;
+  display: grid; place-items: center;
+}
+.stage-video > img, .stage-video > video {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+/* titulo ACIMA do video (como na arte): banner GRES + linha do enredo */
+.video-title { position: absolute; left: 210px; top: 138px; width: 812px; z-index: 2; }
+.gres-banner {
+  display: inline-block; background: var(--cyan); padding: 14px 30px;
+  font-weight: 700; font-size: 40px; color: #fff;
+}
+.gres-enredo { margin-top: 16px; font-weight: 400; font-size: 32px; color: #fff; }
+
+.advance {
+  position: absolute; left: 424px; top: 926px; width: 357px; height: 80px;
+  background: var(--cyan);
+  display: flex; align-items: center; justify-content: center; gap: 18px;
+  color: #fff; font-weight: 900; font-size: 36px;
+  transition: opacity 200ms ease;
+}
+.advance .adv-icon { width: 46px; height: 46px; display: grid; }
+.advance .adv-icon svg { width: 100%; height: 100%; }
+.advance.disabled { opacity: 0.35; pointer-events: none; }
+
+/* ===================== PODIUM (CONFIRME SEUS VOTOS) ===================== */
+.podium-title {
+  position: absolute; top: 70px; left: 0; width: 1920px; text-align: center;
+  font-weight: 900; font-size: 76px; letter-spacing: 0.01em;
+}
+.podium-wrap { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+.col {
+  position: absolute; display: flex; flex-direction: column; align-items: center;
+  animation: rise 0.6s cubic-bezier(0.2, 0.85, 0.25, 1) both;
+}
+/* cresce do chao, escalonado: 3o lugar primeiro, depois 2o, por ultimo 1o */
+.col-3 { animation-delay: 0.05s; }
+.col-2 { animation-delay: 0.4s; }
+.col-1 { animation-delay: 0.75s; }
+@keyframes rise { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+.podium-base, .confirm-btn { animation: fade 0.5s ease 1.1s both; }
+.col .rank { font-weight: 900; font-size: 96px; line-height: 1; margin-bottom: 14px; }
+.col .box {
+  width: 100%; padding: 26px 22px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  text-align: center;
+}
+.col .box .desc { font-weight: 400; font-size: 30px; line-height: 1.25; }
+.col .box .desc b { font-weight: 900; }
+.col-1 { left: 780px; top: 405px; width: 360px; }
+.col-1 .box { background: var(--green); height: 300px; }
+.col-2 { left: 398px; top: 465px; width: 344px; }
+.col-2 .box { background: var(--cyan); height: 240px; }
+.col-3 { left: 1178px; top: 465px; width: 344px; }
+.col-3 .box { background: var(--cyan); height: 240px; }
+.trophy { width: 92px; height: 92px; }
+.podium-base {
+  position: absolute; left: 360px; top: 815px; width: 1200px; height: 6px;
+  background: #fff;
+}
+.confirm-btn {
+  position: absolute; left: 760px; top: 880px; width: 400px; height: 84px;
+  background: var(--cyan);
+  display: flex; align-items: center; justify-content: center; gap: 18px;
+  color: #fff; font-weight: 900; font-size: 38px;
+}
+.confirm-btn .cbox { width: 46px; height: 46px; }
+
+/* ===================== THANKS (OBRIGADO) ===================== */
+.scr-thanks {
+  position: absolute; inset: 0; background: #000;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 34px; text-align: center; padding: 0 70px;
+}
+.thanks-title {
+  font-weight: 900; font-size: 70px; color: #fff; line-height: 1.05;
+  max-width: 1700px;
+}
+.thanks-logo {
+  width: 320px; height: auto;
+  animation: popin 0.7s cubic-bezier(0.2, 1.5, 0.4, 1) 0.2s both;
+}
+.thanks-sub { font-weight: 400; font-size: 38px; color: #fff; max-width: 70%; }
+@keyframes popin { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* ===================== IDLE (reconstruido em HTML p/ traduzir) ===================== */
+.scr-idle { position: absolute; inset: 0; background: #000; }
+.idle-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(1) contrast(1.05) brightness(0.95);
+}
+.idle-title {
+  position: absolute; top: 76px; left: 0; z-index: 3;
+  display: flex; flex-direction: column; align-items: flex-start;
+}
+.t-bar { display: inline-block; padding: 8px 24px; font-weight: 900; font-size: 58px; line-height: 1.08; }
+.t-red { background: #ff1f22; color: #ffce00; }
+.t-green { background: #00853d; color: #fff; }
+.idle-logo { position: absolute; top: 70px; right: 96px; width: 175px; height: auto; z-index: 3; }
+.idle-box {
+  position: absolute; left: 548px; top: 480px; width: 854px; z-index: 3;
+  background: #008ccc; border-radius: 10px; padding: 26px 34px;
+  display: flex; align-items: center; gap: 28px;
+}
+.idle-mask { width: 116px; height: auto; flex-shrink: 0; }
+.idle-box-text { display: flex; flex-direction: column; gap: 8px; }
+.ib1 { color: #fff; font-weight: 400; font-size: 40px; line-height: 1.15; }
+.ib2 { color: #fff; font-weight: 900; font-size: 30px; }

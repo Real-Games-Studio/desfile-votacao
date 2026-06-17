@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "desfile-server",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["start"],
+      "port": 8080
+    },
+    {
+      "name": "docs-static",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/serve-docs.mjs"],
+      "port": 8090
+    }
+  ]
+}
