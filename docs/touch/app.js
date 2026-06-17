@@ -77,7 +77,9 @@
       });
     }
     let g = '';
-    for (const side of ['left', 'right']) if (groups[side]) g += `<g data-edit="ribbon-${side}">${groups[side]}</g>`;
+    // chave unica POR TELA (senao editar uma fita mexe nas outras telas)
+    for (const side of ['left', 'right'])
+      if (groups[side]) g += `<g data-edit="ribbon-${screen}-${side}">${groups[side]}</g>`;
     return `<svg class="ribbon-svg" viewBox="0 0 1920 1080" preserveAspectRatio="none">${g}</svg>`;
   }
 
